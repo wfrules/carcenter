@@ -19,6 +19,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.hello),
+    url(r'^$', views.index),
     path('act/', views.act),
 ]
