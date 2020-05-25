@@ -8,5 +8,5 @@ def index(request):
     return render(request, "index.html", {})
 
 def act(request):
-    print(request.GET.get("dir"))
-    return HttpResponse("act")
+    res = gCar.sendCmd(request.GET.get("dir"))
+    return HttpResponse(res)
