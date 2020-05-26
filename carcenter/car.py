@@ -1,16 +1,17 @@
 from socket import *
 class Car:
+    _socket = None
     def __init__(self):
         pass
 
     def sendCmd(self,cmd):
-        tcp_client_socket = socket(AF_INET, SOCK_STREAM)
-        tcp_client_socket.connect(("192.168.1.130", 80))
-        tcp_client_socket.send(cmd.encode())
-        recv_data = tcp_client_socket.recv(1024)
+        self._socket = socket(AF_INET, SOCK_STREAM)
+        self._socket.connect(("192.168.1.130", 80))
+        self._socket.send(cmd.encode())
+        recv_data = self._socket.recv(1024)
         if recv_data:
             sRet = "返回的消息为:", recv_data.decode('gbk')
         else:
             sRet = "对方已离线。。"
-        tcp_client_socket.close()
+        self._socket.close()
         return sRet
