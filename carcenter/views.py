@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from carcenter.car import Car
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+import json
 
 gCar = Car()
  
@@ -15,4 +16,8 @@ def act(request):
 
 @csrf_exempt
 def cmd(request):
-    return JsonResponse({"result": 0, "msg": "执行成功"})
+    parms = request.POST.get('parms')
+    parms = json.loads(parms)
+    sCmd = parms['cmd'];
+    return JsonResponse({'result': 0, 'cmd': sCmd})
+    return HttpResponse(json.dumps({'result': 0, 'cmd': sCmd}))

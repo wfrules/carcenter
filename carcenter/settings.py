@@ -154,3 +154,5 @@ CORS_ALLOW_HEADERS = (
     'x-requested-with',
     'Pragma',
 )
+
+APPEND_SLASH=False
