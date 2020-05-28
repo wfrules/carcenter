@@ -19,5 +19,5 @@ def cmd(request):
     parms = request.POST.get('parms')
     parms = json.loads(parms)
     sCmd = parms['cmd'];
-    return JsonResponse({'result': 0, 'cmd': sCmd})
-    return HttpResponse(json.dumps({'result': 0, 'cmd': sCmd}))
+    res = gCar.sendCmd(sCmd)
+    return JsonResponse({'result': 0, 'message': res})
