@@ -18,6 +18,8 @@ def act(request):
 def cmd(request):
     parms = request.POST.get('parms')
     parms = json.loads(parms)
-    sCmd = parms['cmd'];
+    sCmd = parms['cmd']
     res = gCar.sendCmd(sCmd)
-    return JsonResponse({'result': 0, 'message': res})
+    objRet = json.loads(res)
+    objRet['result'] = 0;
+    return JsonResponse({'result':0, 'car': objRet})

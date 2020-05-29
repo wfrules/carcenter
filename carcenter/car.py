@@ -10,7 +10,7 @@ class Car:
         self._socket.send(cmd.encode())
         recv_data = self._socket.recv(1024)
         if recv_data:
-            sRet = "返回的消息为:", recv_data.decode('gbk')
+            sRet = recv_data.decode('gbk')
         else:
             sRet = "对方已离线。。"
         self._socket.close()
