@@ -23,3 +23,12 @@ def cmd(request):
     objRet = json.loads(res)
     objRet['result'] = 0;
     return JsonResponse({'result':0, 'car': objRet})
+
+@csrf_exempt
+def sync(request):
+    parms = request.POST.get('parms')
+    parms = json.loads(parms)
+    res = gCar.sendJson(parms['car'])
+    objRet = json.loads(res)
+    objRet['result'] = 0;
+    return JsonResponse({'result':0, 'car': objRet})    

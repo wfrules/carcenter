@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^$', views.index),
     path('act/', views.act),
     url(r'^cmd', views.cmd),
+    url(r'^sync', views.sync),
 ]
